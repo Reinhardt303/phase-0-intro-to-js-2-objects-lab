@@ -1,38 +1,33 @@
-// Write your solution in this file!
-const employee = {
-    name: "defaultName",
-    streetAddress: "defaultAddy",
-};
+const employee = {name: "Natus", streetAddress: "134 Lewis"}
 
-function updateEmployeeWithKeyAndValue(obj, key, value,) {
-    return{
-        ...obj,
-        [key]: value,
-    }
+/* //Why Does this not work?
+function updateEmployeeWithKeyAndValue(employee, key, value){
+    const copyOfupdateEmployeeWithKeyAndValue = {...updateEmployeeWithKeyAndValue}
+    copyOfupdateEmployeeWithKeyAndValue;
+    return employee.key.value;
+} */
+
+function updateEmployeeWithKeyAndValue(employee, key, value){
+    const newEmployee = {...employee}
+
+    newEmployee[key] = value;
+    return newEmployee;
+
 }
 
-const newEmployee = updateEmployeeWithKeyAndValue(
-    employee, defaultName, "updatedName"
-);
+function destructivelyUpdateEmployeeWithKeyAndValue(employee, key, value){
+    employee[key] = value; 
 
-function destructivelyUpdateEmployeeWithKeyAndValue(obj, key, value,) {
-    obj[key] = value; 
-
-  return obj;
-}
-
-const destructedEmployee = destructivelyUpdateEmployeeWithKeyAndValue(
-    employee, defaultName, "updatedName"
-);
-
-function deleteFromEmployeeByKey() {
-    const removedKeyEmployee = {...employee}
-    delete removedKeyEmployee.name
-    return removedKeyEmployee;
-}
-
-function destructivelyDeleteFromEmployeeByKey(employee, key) {
-    delete employee.name
     return employee;
 }
 
+function deleteFromEmployeeByKey(employee, key){
+    const newEmployee = {...employee}
+    delete newEmployee[key]
+    return newEmployee
+}
+
+function destructivelyDeleteFromEmployeeByKey(employee, key){
+    delete employee[key]
+    return employee
+}
